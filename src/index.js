@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importera Bootstrap CSS
+import 'semantic-ui-css/semantic.min.css'; // Importera Semantic UI CSS
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

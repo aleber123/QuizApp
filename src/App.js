@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
-function App() {
+
+import Question from "./Question";
+
+
+
+const App = () => {
+  const [QuizData,setQuizData] = useState ([]);
+
+  useEffect(()=>{
+  const url = "http://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz";
+  fetch(url).then(response=>response.json()).then(data=>{
+    data.map(
+      p => p.all_answers = [p.correct_answer, ...p.incorrect_answers]);
+    console.log(data);
+    setQuizData(data);
+  })  
+}, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      
+<Question data={QuizData[0]}></Question>
+    </div >
+
   );
 }
 
 export default App;
+
