@@ -6,25 +6,29 @@ const Question = (props) => {
 
     const currentQuestion = data;
     return (
-
-        <div class="card">
-            <div class="card-header text-center text-danger">
+        <div className="card">
+            <div className="card-header text-center bg-primary text-white">
                 <h2>My React Quiz Application</h2>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">{currentQuestion.question}</h5>
+            <div className="card-body">
+                <h5 className="card-title">{currentQuestion.question}</h5>
 
-                {currentQuestion.all_answers.map((answer) => (
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                        <label class="form-check-label" for="flexRadioDefault1">
+                {currentQuestion.all_answers.map((answer, index) => (
+                    <div className="form-check" key={index}>
+                        <input 
+                            className="form-check-input" 
+                            type="radio" 
+                            name="quizAnswer" 
+                            id={`answer${index}`} 
+                        />
+                        <label className="form-check-label" htmlFor={`answer${index}`}>
                             {answer}
                         </label>
                     </div>
                 ))}
             </div>
-            <div class="card-footer text-muted">
-                2 days ago
+            <div className="card-footer text-muted">
+                Quiz Question
             </div>
         </div>
 
